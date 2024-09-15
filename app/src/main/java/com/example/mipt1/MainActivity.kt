@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mipt1.ui.theme.MIPT1Theme
@@ -36,28 +35,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainContent(modifier: Modifier = Modifier) {
     val displayText = remember { mutableStateOf("") }
-    val textColor = remember { mutableStateOf(Color.Black) }
 
     Column(modifier = modifier.padding(16.dp)) {
-        Text(
-            text = displayText.value,
-            color = textColor.value
-        )
+        Text(text = displayText.value)
 
         Button(
             onClick = { displayText.value = "Pirmas darbas" },
             modifier = Modifier.padding(top = 16.dp)
         ) {
             Text("Mygtukas")
-        }
-
-        Button(
-            onClick = {
-                textColor.value = if (textColor.value == Color.Black) Color.Blue else Color.Black
-            },
-            modifier = Modifier.padding(top = 8.dp)
-        ) {
-            Text("Pakeisti spalva")
         }
     }
 }
